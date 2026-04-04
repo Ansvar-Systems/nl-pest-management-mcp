@@ -18,16 +18,16 @@ describe('identify_from_symptoms tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('identifies septoria from yellow patches on leaves', () => {
-    const result = handleIdentifyFromSymptoms(db, { symptoms: 'yellow patches on leaves' });
+  test('identifies septoria from gele vlekken on bladeren', () => {
+    const result = handleIdentifyFromSymptoms(db, { symptoms: 'gele vlekken bladeren' });
     const typed = result as { diagnoses: { pest_id: string; pest_name: string; confidence_score: number }[] };
     expect(typed.diagnoses.length).toBeGreaterThan(0);
-    // Septoria has a suggestive symptom "Yellow patches on lower leaves" -- should rank highest
+    // Septoria has a suggestive symptom "Gele vlekken op onderste bladeren"
     expect(typed.diagnoses[0].pest_id).toBe('septoria-tritici');
   });
 
   test('gives higher score for diagnostic-level symptom match', () => {
-    const result = handleIdentifyFromSymptoms(db, { symptoms: 'Tan lesions with pycnidia' });
+    const result = handleIdentifyFromSymptoms(db, { symptoms: 'bruine vlekken pycniden tarwebladeren' });
     const typed = result as { diagnoses: { pest_id: string; confidence_score: number }[] };
     expect(typed.diagnoses.length).toBeGreaterThan(0);
     expect(typed.diagnoses[0].pest_id).toBe('septoria-tritici');
@@ -36,10 +36,10 @@ describe('identify_from_symptoms tool', () => {
   });
 
   test('returns multiple diagnoses for ambiguous symptoms', () => {
-    // "leaves" appears in symptoms for both septoria and aphid
-    const result = handleIdentifyFromSymptoms(db, { symptoms: 'leaves crop damage' });
+    // "bladeren" appears in symptoms for multiple pests
+    const result = handleIdentifyFromSymptoms(db, { symptoms: 'bladeren schade vlekken' });
     const typed = result as { diagnoses: { pest_id: string }[] };
-    // Should find at least septoria (multiple leaf symptoms)
+    // Should find at least one pest with leaf symptoms
     expect(typed.diagnoses.length).toBeGreaterThanOrEqual(1);
   });
 
@@ -51,14 +51,14 @@ describe('identify_from_symptoms tool', () => {
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleIdentifyFromSymptoms(db, { symptoms: 'yellow patches', jurisdiction: 'NZ' });
+    const result = handleIdentifyFromSymptoms(db, { symptoms: 'gele vlekken', jurisdiction: 'NZ' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 
   test('confidence scoring: diagnostic > suggestive > associated', () => {
     // Test with a query that matches the diagnostic symptom
-    const diagnosticResult = handleIdentifyFromSymptoms(db, { symptoms: 'Tan grey lesions dark pycnidia leaves' });
-    const suggestiveResult = handleIdentifyFromSymptoms(db, { symptoms: 'yellow patches lower leaves' });
+    const diagnosticResult = handleIdentifyFromSymptoms(db, { symptoms: 'bruine vlekken pycniden tarwebladeren' });
+    const suggestiveResult = handleIdentifyFromSymptoms(db, { symptoms: 'gele vlekken onderste bladeren' });
 
     const diagTyped = diagnosticResult as { diagnoses: { pest_id: string; confidence_score: number }[] };
     const suggTyped = suggestiveResult as { diagnoses: { pest_id: string; confidence_score: number }[] };

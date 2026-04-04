@@ -1,8 +1,8 @@
 {
   "name": "@ansvar/nl-pest-management-mcp",
-  "mcpName": "io.github.ansvar-systems/uk-pest-management",
+  "mcpName": "io.github.ansvar-systems/nl-pest-management",
   "version": "0.1.0",
-  "description": "UK pest, disease, and weed management via MCP -- identification, treatment, IPM guidance, symptom diagnosis",
+  "description": "Dutch pest, disease, and crop protection data via MCP -- identification, treatment, IPM guidance, symptom diagnosis",
   "type": "module",
   "main": "dist/server.js",
   "bin": {
@@ -25,7 +25,7 @@
     "freshness:check": "tsx scripts/check-freshness.ts",
     "coverage:update": "tsx scripts/update-coverage.ts"
   },
-  "keywords": ["mcp", "agriculture", "pest-management", "ipm", "crop-protection", "ahdb"],
+  "keywords": ["mcp", "agriculture", "pest-management", "ipm", "crop-protection", "ctgb", "netherlands", "gewasbescherming"],
   "author": "Ansvar Systems <info@ansvar.eu>",
   "license": "Apache-2.0",
   "repository": {

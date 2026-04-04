@@ -4,13 +4,13 @@
 [![GHCR](https://github.com/ansvar-systems/nl-pest-management-mcp/actions/workflows/ghcr-build.yml/badge.svg)](https://github.com/ansvar-systems/nl-pest-management-mcp/actions/workflows/ghcr-build.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-UK pest, disease, and weed management via the [Model Context Protocol](https://modelcontextprotocol.io). Identify crop threats, get treatment options, IPM guidance, and run symptom-based differential diagnosis -- all from your AI assistant.
+Dutch pest, disease, and crop protection data via the [Model Context Protocol](https://modelcontextprotocol.io). Identify crop threats, get treatment options, IPM guidance, and run symptom-based differential diagnosis -- all from your AI assistant.
 
 Part of [Ansvar Open Agriculture](https://ansvar.eu/open-agriculture).
 
 ## Why This Exists
 
-Farmers and agronomists need quick access to pest identification, treatment options, and IPM thresholds. This information is published by AHDB and HSE but is scattered across knowledge libraries, PDFs, and the CRD pesticide database. This MCP server brings it all together in a searchable, structured format.
+Dutch farmers and agronomists need quick access to pest identification, treatment options, and IPM thresholds. This information is published by Ctgb, WUR/PPO, and CLM but is scattered across databases, research publications, and advisory bulletins. This MCP server brings it all together in a searchable, structured format.
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ Add to `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "pest-management": {
+    "nl-pest-management": {
       "command": "npx",
       "args": ["-y", "@ansvar/nl-pest-management-mcp"]
     }
@@ -32,7 +32,7 @@ Add to `claude_desktop_config.json`:
 ### Claude Code
 
 ```bash
-claude mcp add uk-pest-management npx @ansvar/nl-pest-management-mcp
+claude mcp add nl-pest-management npx @ansvar/nl-pest-management-mcp
 ```
 
 ### Streamable HTTP (remote)
@@ -57,21 +57,24 @@ npx @ansvar/nl-pest-management-mcp
 
 Ask your AI assistant:
 
-- "What diseases affect winter wheat?"
-- "I see yellow patches on my wheat leaves with dark spots -- what could it be?"
-- "What are the treatment options for blackgrass?"
-- "Show me IPM guidance for septoria in winter wheat"
-- "What products contain prothioconazole approved for wheat?"
-- "What are all the pests and weeds that attack barley?"
+- "Welke ziekten treffen wintertarwe?"
+- "Ik zie bruine vlekken op mijn aardappelbladeren met wit schimmelpluis -- wat kan het zijn?"
+- "Wat zijn de behandelopties voor phytophthora in aardappelen?"
+- "Toon de IPM-richtlijnen voor septoria in wintertarwe"
+- "Welke producten met prothioconazool zijn toegelaten voor tarwe?"
+- "Wat zijn de plagen en ziekten die gerst aantasten?"
 
 ## Stats
 
 | Metric | Value |
 |--------|-------|
 | Tools | 10 (3 meta + 7 domain) |
-| Jurisdiction | GB |
-| Data sources | AHDB Knowledge Library, HSE CRD Pesticide Register, AHDB IPM Guidance |
-| License (data) | Open Government Licence v3 |
+| Jurisdiction | NL |
+| Pests & diseases | 10 major Dutch arable threats |
+| Approved products | 20 (Ctgb toelatingsbank) |
+| IPM guidance records | 6 |
+| Data sources | Ctgb toelatingsbank, WUR/PPO, CLM Milieumeetlat, NVWA |
+| License (data) | Public government/research sources |
 | License (code) | Apache-2.0 |
 | Transport | stdio + Streamable HTTP |
 
@@ -82,13 +85,13 @@ Ask your AI assistant:
 | `about` | Server metadata and links |
 | `list_sources` | Data sources with freshness info |
 | `check_data_freshness` | Staleness status and refresh command |
-| `search_pests` | FTS5 search across pest, disease, and weed data |
+| `search_pests` | FTS5 search across pest and disease data |
 | `get_pest_details` | Full pest profile with symptoms and identification |
 | `get_treatments` | Chemical, cultural, and biological treatment options |
 | `get_ipm_guidance` | IPM thresholds, monitoring, and decision guides |
 | `search_crop_threats` | All threats affecting a specific crop |
 | `identify_from_symptoms` | Symptom-based differential diagnosis with confidence scoring |
-| `get_approved_products` | UK CRD-approved pesticide products |
+| `get_approved_products` | Ctgb-approved pesticide products (gewasbeschermingsmiddelen) |
 
 See [TOOLS.md](TOOLS.md) for full parameter documentation.
 
@@ -105,7 +108,7 @@ See [SECURITY.md](SECURITY.md) for reporting policy.
 
 ## Disclaimer
 
-Pesticide data is for reference only. **Always check the current HSE CRD register before applying any product.** This tool is not professional pest management advice. See [DISCLAIMER.md](DISCLAIMER.md).
+Pesticide data is for reference only. **Always check the current Ctgb register before applying any product.** This tool is not professional pest management advice. See [DISCLAIMER.md](DISCLAIMER.md).
 
 ## Contributing
 
@@ -113,4 +116,4 @@ Issues and pull requests welcome. For security vulnerabilities, email security@a
 
 ## License
 
-Apache-2.0. Data sourced under Open Government Licence v3.
+Apache-2.0. Data sourced from public Dutch government and research publications.

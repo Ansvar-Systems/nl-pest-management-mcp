@@ -32,7 +32,7 @@ describe('get_treatments tool', () => {
     expect(result).toHaveProperty('results_count', 1);
     const typed = result as { treatments: { approach: string; active_substance: string }[] };
     expect(typed.treatments[0].approach).toBe('chemical');
-    expect(typed.treatments[0].active_substance).toContain('prothioconazole');
+    expect(typed.treatments[0].active_substance).toContain('prothioconazool');
   });
 
   test('returns empty for non-existent pest', () => {

@@ -8,45 +8,45 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO pests (id, name, common_names, pest_type, description, lifecycle, identification, crops_affected, risk_factors, economic_impact, images_description, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'septoria-tritici', 'Septoria Tritici Blotch', JSON.stringify(['Septoria leaf blotch', 'Speckled leaf blotch']),
-      'disease', 'Fungal disease caused by Zymoseptoria tritici. Major foliar disease of wheat in the UK.',
-      'Rain-splashed spores infect leaves, 2-4 week latent period before visible symptoms.',
-      'Tan or grey irregular lesions with dark fruiting bodies (pycnidia) visible under hand lens.',
-      JSON.stringify(['wheat', 'winter wheat', 'spring wheat']),
-      'Warm wet autumn, mild winter, dense canopy during tillering and stem extension',
-      'Yield losses of 20-50% in untreated crops in high-pressure years.',
-      'Tan lesions with black pycnidia dots on leaf surface',
-      'GB',
+      'septoria-tritici', 'Septoria tritici bladvlekkenziekte', JSON.stringify(['Bladvlekkenziekte', 'Septoria leaf blotch', 'Zymoseptoria tritici']),
+      'disease', 'Schimmelziekte veroorzaakt door Zymoseptoria tritici. Belangrijkste bladziekte in wintertarwe in Nederland.',
+      'Infectie via ascosporen (herfst) en pyknidiosporen (regenspatten, voorjaar). Latente periode 2-4 weken.',
+      'Langwerpige bruine vlekken op bladeren met kenmerkende zwarte pycniden (vruchtlichamen) zichtbaar als donkere puntjes.',
+      JSON.stringify(['tarwe', 'wintertarwe', 'zomertarwe']),
+      'Natte herfst en winter, vatbare rassen, vroege zaai, dicht gewas',
+      'Opbrengstderving tot 30-50% bij onbehandelde vatbare rassen in natte jaren.',
+      'Bruine langwerpige bladvlekken met zwarte pycniden op tarweblad',
+      'NL',
     ]
   );
   db.run(
     `INSERT INTO pests (id, name, common_names, pest_type, description, lifecycle, identification, crops_affected, risk_factors, economic_impact, images_description, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'blackgrass', 'Black-grass', JSON.stringify(['Slender meadow foxtail']),
-      'weed', 'Annual grass weed (Alopecurus myosuroides). Most serious herbicide-resistant weed in UK arable farming.',
-      'Germinates autumn through spring, flowers May-July, single plant produces up to 1000 seeds.',
-      'Distinctive dark purplish-black seed head. Leaves are smooth, slightly twisted, with a short blunt ligule.',
-      JSON.stringify(['wheat', 'winter wheat', 'barley', 'oilseed rape']),
-      'Continuous winter cropping, early drilling, heavy clay soils, mild wet autumns',
-      'Yield losses of 0.4-0.8 t/ha per 100 heads/m2. Herbicide resistance widespread.',
-      'Dark seed heads emerging above wheat canopy',
-      'GB',
+      'phytophthora-infestans', 'Phytophthora infestans', JSON.stringify(['Aardappelziekte', 'Late blight', 'Phytophthora']),
+      'disease', 'Oömyceet die aardappelziekte veroorzaakt. De belangrijkste ziekte in de Nederlandse aardappelteelt.',
+      'Overwintert op afvalhopen en opslag. Zoösporen verspreiden via wind en regen. Infectiecyclus 4-7 dagen.',
+      'Onregelmatige bruine vlekken op bladeren, vaak startend aan bladranden. Wit schimmelpluis aan onderzijde blad.',
+      JSON.stringify(['aardappelen', 'tomaten']),
+      'Vochtig weer (>90% RV), temperatuur 10-20°C, onbeschermde nieuwe bladgroei, nabijheid afvalhopen',
+      'Gemiddeld 50-80 miljoen euro per jaar aan bestrijdingskosten in Nederland.',
+      'Bruine vlekken op aardappelblad met wit schimmelpluis aan onderzijde',
+      'NL',
     ]
   );
   db.run(
     `INSERT INTO pests (id, name, common_names, pest_type, description, lifecycle, identification, crops_affected, risk_factors, economic_impact, images_description, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'grain-aphid', 'Grain Aphid', JSON.stringify(['English grain aphid', 'Sitobion avenae']),
-      'pest', 'Aphid species (Sitobion avenae) that feeds on cereal ears and upper leaves.',
-      'Winged adults colonise crops in late spring. Populations peak around flowering.',
-      'Green to reddish-brown aphid 2-3mm long, found on ears and flag leaves. Black cornicles (siphunculi).',
-      JSON.stringify(['wheat', 'barley', 'oats']),
-      'Warm dry spring, low natural enemy numbers, early ear emergence',
-      'Direct feeding damage and honeydew causing sooty moulds. Yield loss up to 15% in severe outbreaks.',
-      'Clusters of green-brown aphids on wheat ear',
-      'GB',
+      'bladluis-granen', 'Bladluis (granen)', JSON.stringify(['Graanbladluis', 'Grote graanluis', 'Sitobion avenae']),
+      'pest', 'Verschillende bladluissoorten die granen aantasten: grote graanluis (Sitobion avenae), vogelkersluis (Rhopalosiphum padi).',
+      'Gevleugelde bladluizen koloniseren gewassen in het voorjaar. Populatieopbouw bij warm, droog weer.',
+      'Kleine (2-3 mm) zachte insecten, groen tot roodbruin, op bladeren, stengels en aren. Honingdauwafscheiding.',
+      JSON.stringify(['tarwe', 'wintertarwe', 'gerst', 'wintergerst', 'aardappelen']),
+      'Warm droog voorjaar, weinig natuurlijke vijanden, vroege zaai in herfst (BYDV-risico)',
+      'Directe zuigschade: opbrengstderving 5-15%. BYDV-infectie via herfstbladluizen: tot 30% verlies.',
+      'Groene bladluizen op tarweaar met honingdauwdruppels',
+      'NL',
     ]
   );
 
@@ -54,41 +54,41 @@ export function createSeededDatabase(dbPath: string): Database {
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['septoria-tritici', 'Tan or grey lesions with dark pycnidia on leaves', 'leaves', 'autumn through spring', 'diagnostic']
+    ['septoria-tritici', 'Langwerpige bruine vlekken met zwarte pycniden op tarwebladeren', 'bladeren', 'herfst tot voorjaar', 'diagnostic']
   );
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['septoria-tritici', 'Yellow patches on lower leaves', 'leaves', 'autumn and early spring', 'suggestive']
+    ['septoria-tritici', 'Gele vlekken op onderste bladeren', 'bladeren', 'herfst en vroeg voorjaar', 'suggestive']
   );
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['septoria-tritici', 'Reduced grain fill in severe cases', 'ears', 'summer', 'associated']
-  );
-
-  // Symptoms -- Blackgrass (2 symptoms)
-  db.run(
-    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
-     VALUES (?, ?, ?, ?, ?)`,
-    ['blackgrass', 'Dark purplish-black seed heads above crop canopy', 'seed head', 'May to July', 'diagnostic']
-  );
-  db.run(
-    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
-     VALUES (?, ?, ?, ?, ?)`,
-    ['blackgrass', 'Patches of thin or stunted crop with grass weed competition', 'whole plant', 'spring', 'suggestive']
+    ['septoria-tritici', 'Verminderde korrelzetting bij ernstige aantasting', 'aren', 'zomer', 'associated']
   );
 
-  // Symptoms -- Grain Aphid (2 symptoms)
+  // Symptoms -- Phytophthora (2 symptoms)
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['grain-aphid', 'Clusters of small green-brown insects on ears and upper leaves', 'ears', 'late spring to summer', 'diagnostic']
+    ['phytophthora-infestans', 'Onregelmatige bruine vlekken op bladeren met wit schimmelpluis', 'bladeren', 'juni tot september', 'diagnostic']
   );
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['grain-aphid', 'Sticky honeydew deposits and sooty mould on leaves', 'leaves', 'summer', 'suggestive']
+    ['phytophthora-infestans', 'Bruinrot in knollen', 'knollen', 'oogst en bewaring', 'suggestive']
+  );
+
+  // Symptoms -- Bladluis (2 symptoms)
+  db.run(
+    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
+     VALUES (?, ?, ?, ?, ?)`,
+    ['bladluis-granen', 'Kolonies kleine zachte insecten op bladeren stengels en aren', 'aren', 'voorjaar tot zomer', 'diagnostic']
+  );
+  db.run(
+    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
+     VALUES (?, ?, ?, ?, ?)`,
+    ['bladluis-granen', 'Honingdauw en zwarte roetdauwschimmels op bladeren', 'bladeren', 'zomer', 'suggestive']
   );
 
   // Treatments -- Septoria (1 chemical, 1 cultural)
@@ -96,82 +96,82 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'septoria-tritici', 'chemical', 'Foliar fungicide application (T1/T2 timing)',
-      'prothioconazole + bixafen', 'T1 (GS30-32) and T2 (GS39-49)',
-      'See product label', 'Good protectant and curative activity. Best applied preventatively.',
-      'Azole resistance increasing. Use mixtures and alternate modes of action.',
-      'approved', 'AHDB', 'GB',
+      'septoria-tritici', 'chemical', 'Bladbespuiting met Prosaro (prothioconazool + tebuconazool)',
+      'prothioconazool + tebuconazool', 'T1 (GS 31-32) en T2 (GS 39-49), preventief tot vroeg curatief',
+      '0,8-1,0 L/ha', 'Brede werking tegen bladschimmels. Combinatie van twee azolen voor resistentiemanagement.',
+      'Matig tot hoog (azoolresistentie opbouwend in NL populaties)',
+      'Ctgb toegelaten', 'Ctgb', 'NL',
     ]
   );
   db.run(
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'septoria-tritici', 'cultural', 'Variety resistance and delayed drilling',
-      null, 'Pre-planting and variety selection',
-      null, 'Choose varieties with high septoria resistance rating (7+). Delay drilling to reduce autumn infection.',
-      null, null, 'AHDB', 'GB',
+      'septoria-tritici', 'cultural', 'Resistente rassen en gewasrotatie',
+      null, 'Rassenkeuze en bouwplanplanning',
+      null, 'Rassen met septoriaresistentie 7+ (Aanbevelende Rassenlijst) verlagen infectiedruk.',
+      null, null, 'WUR/PPO', 'NL',
     ]
   );
 
-  // Treatments -- Blackgrass (1 chemical, 1 cultural)
+  // Treatments -- Phytophthora (1 chemical, 1 cultural)
   db.run(
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'blackgrass', 'chemical', 'Pre-emergence herbicide application',
-      'flufenacet + diflufenican', 'Pre-emergence (within 48h of drilling)',
-      'See product label', 'Residual activity. Best on moist seedbeds. Reduced efficacy on dry soils.',
-      'Metabolic resistance widespread. Stack sequences for best control.',
-      'approved', 'AHDB', 'GB',
+      'phytophthora-infestans', 'chemical', 'Preventieve bladbespuiting met Ranman Top',
+      'cyazofamide', 'Preventief, 5-7 dagen interval bij hoge druk',
+      '0,5 L/ha', 'Contactmiddel met goede bladbescherming. Geen curatie.',
+      'Laag resistentierisico (FRAC-groep 21)',
+      'Ctgb toegelaten', 'Ctgb', 'NL',
     ]
   );
   db.run(
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'blackgrass', 'cultural', 'Delayed drilling and spring cropping',
-      null, 'Autumn planting decisions',
-      null, 'Delay drilling to late October or switch to spring crops. Stale seedbeds before drilling.',
-      null, null, 'AHDB', 'GB',
-    ]
-  );
-
-  // Treatments -- Grain Aphid (1 chemical, 1 cultural)
-  db.run(
-    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [
-      'grain-aphid', 'chemical', 'Pyrethroid insecticide spray',
-      'lambda-cyhalothrin', 'When threshold exceeded (66% of tillers with aphids)',
-      'See product label', 'Fast knockdown. Avoid broad-spectrum use to preserve natural enemies.',
-      'Low current resistance but broad-spectrum impact on beneficials.',
-      'approved', 'AHDB', 'GB',
-    ]
-  );
-  db.run(
-    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [
-      'grain-aphid', 'cultural', 'Conservation biological control',
-      null, 'Season-long',
-      null, 'Maintain field margins and beetle banks to support natural enemies (ladybirds, parasitoids, hoverflies).',
-      null, null, 'AHDB', 'GB',
+      'phytophthora-infestans', 'cultural', 'IPM-maatregelen: resistente rassen, afvalhopen opruimen',
+      null, 'Seizoensplanning en veldmanagement',
+      null, 'Resistente rassen verlagen bespuitingsfrequentie. Opruimen afvalhopen verwijdert overwinteringsbron.',
+      null, null, 'WUR/PPO', 'NL',
     ]
   );
 
-  // IPM guidance -- winter wheat + septoria
+  // Treatments -- Bladluis (1 chemical, 1 cultural)
+  db.run(
+    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      'bladluis-granen', 'chemical', 'Insecticide bespuiting met Teppeki (flonicamid)',
+      'flonicamid', 'Bij overschrijding schadedrempel',
+      '0,14 kg/ha', 'Systemisch insecticide, selectief voor zuigende insecten.',
+      'Laag (IRAC-groep 29)',
+      'Ctgb toegelaten', 'Ctgb', 'NL',
+    ]
+  );
+  db.run(
+    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      'bladluis-granen', 'cultural', 'Natuurlijke vijanden en schadedrempelbewaking',
+      null, 'Seizoensmonitoring',
+      null, 'Natuurlijke vijanden (lieveheersbeestjes, sluipwespen) kunnen populaties reguleren.',
+      null, null, 'WUR/PPO', 'NL',
+    ]
+  );
+
+  // IPM guidance -- wintertarwe + septoria
   db.run(
     `INSERT INTO ipm_guidance (crop_id, pest_id, threshold, monitoring_method, cultural_controls, prevention, decision_guide, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'winter-wheat', 'septoria-tritici',
-      'Septoria on upper 3 leaves by GS32; >20% leaf area affected on leaf 3',
-      'Regular leaf assessments from GS30. Check rain splash infection risk using AHDB disease risk tool.',
-      'Resistant varieties (rating 7+), delayed drilling, wider row spacing for air circulation',
-      'Select varieties with high septoria resistance. Avoid very early drilling in high-risk areas.',
-      'Base T1 decision on variety resistance, autumn/winter rainfall, and leaf infection levels. T2 protects flag leaf.',
-      'AHDB', 'GB',
+      'wintertarwe', 'septoria-tritici',
+      'T1-beslissing: septoria op bovenste 3 bladetages bij GS31-32 en >20% bladoppervlak aangetast op blad 3',
+      'Visuele bladbeoordeling op meerdere plekken in veld. Let op pycniden in lesies.',
+      'Resistente rassen (septoriaresistentie 7+), niet te vroeg zaaien, stikstofbemesting beperken',
+      'Rassenkeuze is eerste stap. Gewasrotatie vermijdt inoculumopbouw.',
+      'T1-bespuiting op basis van ras, zaaitijdstip, neerslag en bladaantasting. T2 altijd bij vatbare rassen.',
+      'WUR/PPO', 'NL',
     ]
   );
 
@@ -180,16 +180,16 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO approved_products (product_name, active_substance, target_pests, approved_crops, approval_expiry, registration_number, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Aviator 235 Xpro', 'prothioconazole + bixafen', 'Septoria, rusts, eyespot',
-      'wheat, barley', '2027-12-31', 'MAPP 16054', 'CRD', 'GB',
+      'Prosaro', 'prothioconazool + tebuconazool', 'Septoria, fusarium, roest, meeldauw',
+      'tarwe, gerst, rogge, triticale', '2027-10-31', 'W-13236', 'Ctgb', 'NL',
     ]
   );
   db.run(
     `INSERT INTO approved_products (product_name, active_substance, target_pests, approved_crops, approval_expiry, registration_number, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Liberator', 'flufenacet + diflufenican', 'Blackgrass, annual meadow-grass, ryegrass',
-      'wheat, barley, oilseed rape', '2028-06-30', 'MAPP 14217', 'CRD', 'GB',
+      'Ranman Top', 'cyazofamide', 'Phytophthora infestans',
+      'aardappelen', '2027-12-31', 'W-12614', 'Ctgb', 'NL',
     ]
   );
 
@@ -197,28 +197,28 @@ export function createSeededDatabase(dbPath: string): Database {
   db.run(
     `INSERT INTO search_index (name, common_names, description, identification, pest_type, jurisdiction) VALUES (?, ?, ?, ?, ?, ?)`,
     [
-      'Septoria Tritici Blotch', 'Septoria leaf blotch, Speckled leaf blotch',
-      'Fungal disease caused by Zymoseptoria tritici. Major foliar disease of wheat in the UK.',
-      'Tan or grey irregular lesions with dark fruiting bodies (pycnidia) visible under hand lens.',
-      'disease', 'GB',
+      'Septoria tritici bladvlekkenziekte', 'Bladvlekkenziekte, Septoria leaf blotch, Zymoseptoria tritici',
+      'Schimmelziekte veroorzaakt door Zymoseptoria tritici. Belangrijkste bladziekte in wintertarwe in Nederland.',
+      'Langwerpige bruine vlekken op bladeren met kenmerkende zwarte pycniden (vruchtlichamen) zichtbaar als donkere puntjes.',
+      'disease', 'NL',
     ]
   );
   db.run(
     `INSERT INTO search_index (name, common_names, description, identification, pest_type, jurisdiction) VALUES (?, ?, ?, ?, ?, ?)`,
     [
-      'Black-grass', 'Slender meadow foxtail',
-      'Annual grass weed (Alopecurus myosuroides). Most serious herbicide-resistant weed in UK arable farming.',
-      'Distinctive dark purplish-black seed head. Leaves are smooth, slightly twisted, with a short blunt ligule.',
-      'weed', 'GB',
+      'Phytophthora infestans', 'Aardappelziekte, Late blight, Phytophthora',
+      'Oömyceet die aardappelziekte veroorzaakt. De belangrijkste ziekte in de Nederlandse aardappelteelt.',
+      'Onregelmatige bruine vlekken op bladeren, vaak startend aan bladranden. Wit schimmelpluis aan onderzijde blad.',
+      'disease', 'NL',
     ]
   );
   db.run(
     `INSERT INTO search_index (name, common_names, description, identification, pest_type, jurisdiction) VALUES (?, ?, ?, ?, ?, ?)`,
     [
-      'Grain Aphid', 'English grain aphid, Sitobion avenae',
-      'Aphid species (Sitobion avenae) that feeds on cereal ears and upper leaves.',
-      'Green to reddish-brown aphid 2-3mm long, found on ears and flag leaves. Black cornicles (siphunculi).',
-      'pest', 'GB',
+      'Bladluis (granen)', 'Graanbladluis, Grote graanluis, Sitobion avenae',
+      'Verschillende bladluissoorten die granen aantasten: grote graanluis (Sitobion avenae), vogelkersluis (Rhopalosiphum padi).',
+      'Kleine (2-3 mm) zachte insecten, groen tot roodbruin, op bladeren, stengels en aren. Honingdauwafscheiding.',
+      'pest', 'NL',
     ]
   );
 

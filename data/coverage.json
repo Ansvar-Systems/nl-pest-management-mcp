@@ -1,0 +1,70 @@
+{
+  "mcp_name": "Netherlands Pest Management MCP",
+  "jurisdiction": "NL",
+  "build_date": "2026-04-04",
+  "status": "populated",
+  "pests": 10,
+  "symptoms": 36,
+  "treatments": 23,
+  "approved_products": 20,
+  "ipm_guidance": 6,
+  "data_sources": [
+    "Ctgb toelatingsbank (College voor de toelating van gewasbeschermingsmiddelen en biociden)",
+    "WUR/PPO Gewasbeschermingskennisbank (Wageningen University & Research)",
+    "CLM Milieumeetlat (Centrum voor Landbouw en Milieu)",
+    "NVWA (Nederlandse Voedsel- en Warenautoriteit)",
+    "Aanbevelende Rassenlijst / Aardappelrassenlijst"
+  ],
+  "pests_included": [
+    {
+      "id": "phytophthora-infestans",
+      "name": "Phytophthora infestans",
+      "type": "disease"
+    },
+    {
+      "id": "septoria-tritici",
+      "name": "Septoria tritici bladvlekkenziekte",
+      "type": "disease"
+    },
+    {
+      "id": "meeldauw",
+      "name": "Echte meeldauw (granen)",
+      "type": "disease"
+    },
+    {
+      "id": "bladluis-granen",
+      "name": "Bladluis (granen)",
+      "type": "pest"
+    },
+    {
+      "id": "coloradokever",
+      "name": "Coloradokever",
+      "type": "pest"
+    },
+    {
+      "id": "aardappelcysteaaltje",
+      "name": "Aardappelcysteaaltje",
+      "type": "pest"
+    },
+    {
+      "id": "fusarium-aar",
+      "name": "Fusarium (aarfusarium)",
+      "type": "disease"
+    },
+    {
+      "id": "rhizoctonia-solani",
+      "name": "Rhizoctonia solani",
+      "type": "disease"
+    },
+    {
+      "id": "ratelziekte",
+      "name": "Ratelziekte (Tobacco Rattle Virus)",
+      "type": "disease"
+    },
+    {
+      "id": "stengelaaltje",
+      "name": "Stengelaaltje",
+      "type": "pest"
+    }
+  ]
+}
