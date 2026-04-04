@@ -3,17 +3,20 @@
   "jurisdiction": "NL",
   "build_date": "2026-04-04",
   "status": "populated",
-  "pests": 10,
-  "symptoms": 36,
-  "treatments": 23,
-  "approved_products": 20,
-  "ipm_guidance": 6,
+  "pests": 48,
+  "symptoms": 158,
+  "treatments": 51,
+  "approved_products": 53,
+  "ipm_guidance": 21,
   "data_sources": [
     "Ctgb toelatingsbank (College voor de toelating van gewasbeschermingsmiddelen en biociden)",
     "WUR/PPO Gewasbeschermingskennisbank (Wageningen University & Research)",
     "CLM Milieumeetlat (Centrum voor Landbouw en Milieu)",
     "NVWA (Nederlandse Voedsel- en Warenautoriteit)",
-    "Aanbevelende Rassenlijst / Aardappelrassenlijst"
+    "Aanbevelende Rassenlijst / Aardappelrassenlijst",
+    "IRS (Instituut voor Rationele Suikerproductie)",
+    "NFO (Nederlandse Fruittelers Organisatie)",
+    "Glastuinbouw NL / Koppert Biological Systems"
   ],
   "pests_included": [
     {
@@ -22,33 +25,23 @@
       "type": "disease"
     },
     {
-      "id": "septoria-tritici",
-      "name": "Septoria tritici bladvlekkenziekte",
+      "id": "schurft-streptomyces",
+      "name": "Gewone schurft (Streptomyces scabies)",
       "type": "disease"
     },
     {
-      "id": "meeldauw",
-      "name": "Echte meeldauw (granen)",
+      "id": "zilverschurft",
+      "name": "Zilverschurft (Helminthosporium solani)",
       "type": "disease"
     },
     {
-      "id": "bladluis-granen",
-      "name": "Bladluis (granen)",
-      "type": "pest"
+      "id": "droogrot-fusarium",
+      "name": "Droogrot (Fusarium spp.)",
+      "type": "disease"
     },
     {
-      "id": "coloradokever",
-      "name": "Coloradokever",
-      "type": "pest"
-    },
-    {
-      "id": "aardappelcysteaaltje",
-      "name": "Aardappelcysteaaltje",
-      "type": "pest"
-    },
-    {
-      "id": "fusarium-aar",
-      "name": "Fusarium (aarfusarium)",
+      "id": "natrot-erwinia",
+      "name": "Natrot (Pectobacterium/Dickeya)",
       "type": "disease"
     },
     {
@@ -62,8 +55,208 @@
       "type": "disease"
     },
     {
+      "id": "trips-aardappel",
+      "name": "Trips (aardappelen)",
+      "type": "pest"
+    },
+    {
+      "id": "bladrandkever",
+      "name": "Bladrandkever (Sitona lineatus)",
+      "type": "pest"
+    },
+    {
+      "id": "coloradokever",
+      "name": "Coloradokever",
+      "type": "pest"
+    },
+    {
+      "id": "aardappelcysteaaltje",
+      "name": "Aardappelcysteaaltje",
+      "type": "pest"
+    },
+    {
+      "id": "septoria-tritici",
+      "name": "Septoria tritici bladvlekkenziekte",
+      "type": "disease"
+    },
+    {
+      "id": "meeldauw",
+      "name": "Echte meeldauw (granen)",
+      "type": "disease"
+    },
+    {
+      "id": "bruine-roest",
+      "name": "Bruine roest (Puccinia triticina)",
+      "type": "disease"
+    },
+    {
+      "id": "gele-roest",
+      "name": "Gele roest (Puccinia striiformis)",
+      "type": "disease"
+    },
+    {
+      "id": "oogvlekkenziekte",
+      "name": "Oogvlekkenziekte (Oculimacula yallundae)",
+      "type": "disease"
+    },
+    {
+      "id": "halmdoder",
+      "name": "Halmdoder (Gaeumannomyces tritici)",
+      "type": "disease"
+    },
+    {
+      "id": "fusarium-aar",
+      "name": "Fusarium (aarfusarium)",
+      "type": "disease"
+    },
+    {
+      "id": "bladluis-granen",
+      "name": "Bladluis (granen)",
+      "type": "pest"
+    },
+    {
+      "id": "graanhaantje",
+      "name": "Graanhaantje (Oulema melanopus)",
+      "type": "pest"
+    },
+    {
+      "id": "fritvlieg",
+      "name": "Fritvlieg (Oscinella frit)",
+      "type": "pest"
+    },
+    {
+      "id": "vergelingsziekte-biet",
+      "name": "Vergelingsziekte (bietenvirus)",
+      "type": "disease"
+    },
+    {
+      "id": "cercospora-biet",
+      "name": "Cercospora-bladvlekkenziekte (Cercospora beticola)",
+      "type": "disease"
+    },
+    {
+      "id": "bietenvlieg",
+      "name": "Bietenvlieg (Pegomya betae)",
+      "type": "pest"
+    },
+    {
+      "id": "bietencysteaaltje",
+      "name": "Bietencysteaaltje (Heterodera schachtii)",
+      "type": "pest"
+    },
+    {
+      "id": "bladvlekkenziekte-botrytis-ui",
+      "name": "Bladvlekkenziekte uien (Botrytis squamosa)",
+      "type": "disease"
+    },
+    {
+      "id": "valse-meeldauw-ui",
+      "name": "Valse meeldauw uien (Peronospora destructor)",
+      "type": "disease"
+    },
+    {
+      "id": "preimot",
+      "name": "Preimot (Acrolepiopsis assectella)",
+      "type": "pest"
+    },
+    {
       "id": "stengelaaltje",
       "name": "Stengelaaltje",
+      "type": "pest"
+    },
+    {
+      "id": "koolvlieg",
+      "name": "Koolvlieg (Delia radicum)",
+      "type": "pest"
+    },
+    {
+      "id": "koolwitje",
+      "name": "Koolwitje (Pieris brassicae / P. rapae)",
+      "type": "pest"
+    },
+    {
+      "id": "kooluil",
+      "name": "Kooluil (Mamestra brassicae)",
+      "type": "pest"
+    },
+    {
+      "id": "knolvoet",
+      "name": "Knolvoet (Plasmodiophora brassicae)",
+      "type": "disease"
+    },
+    {
+      "id": "maisstengelborer",
+      "name": "Maisstengelborer (Ostrinia nubilalis)",
+      "type": "pest"
+    },
+    {
+      "id": "builenbrand-mais",
+      "name": "Builenbrand (Ustilago maydis)",
+      "type": "disease"
+    },
+    {
+      "id": "schurft-venturia",
+      "name": "Schurft (Venturia inaequalis)",
+      "type": "disease"
+    },
+    {
+      "id": "vruchtboomkanker",
+      "name": "Vruchtboomkanker (Neonectria ditissima)",
+      "type": "disease"
+    },
+    {
+      "id": "fruitmot",
+      "name": "Fruitmot (Cydia pomonella)",
+      "type": "pest"
+    },
+    {
+      "id": "appelbloesemkever",
+      "name": "Appelbloesemkever (Anthonomus pomorum)",
+      "type": "pest"
+    },
+    {
+      "id": "bloedluis",
+      "name": "Bloedluis (Eriosoma lanigerum)",
+      "type": "pest"
+    },
+    {
+      "id": "perevuur",
+      "name": "Perevuur (Erwinia amylovora)",
+      "type": "disease"
+    },
+    {
+      "id": "tulpenvuur",
+      "name": "Tulpenvuur (Botrytis tulipae)",
+      "type": "disease"
+    },
+    {
+      "id": "pythium-bol",
+      "name": "Pythium (bolgewassen)",
+      "type": "disease"
+    },
+    {
+      "id": "fusarium-bol",
+      "name": "Fusarium oxysporum (bolgewassen)",
+      "type": "disease"
+    },
+    {
+      "id": "wittevlieg-glas",
+      "name": "Wittevlieg (Trialeurodes vaporariorum)",
+      "type": "pest"
+    },
+    {
+      "id": "spint-glas",
+      "name": "Spint (Tetranychus urticae)",
+      "type": "pest"
+    },
+    {
+      "id": "trips-glas",
+      "name": "Californische trips (Frankliniella occidentalis)",
+      "type": "pest"
+    },
+    {
+      "id": "mineervlieg-glas",
+      "name": "Mineervlieg (Liriomyza spp.)",
       "type": "pest"
     }
   ]
