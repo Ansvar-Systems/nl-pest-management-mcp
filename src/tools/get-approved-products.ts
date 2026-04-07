@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -57,5 +58,12 @@ export function handleGetApprovedProducts(db: Database, args: GetApprovedProduct
       source: p.source,
     })),
     _meta: buildMeta({ source_url: 'https://www.hse.gov.uk/pesticides/databases/' }),
+    _citation: buildCitation(
+      args.active_substance ? `Approved products: ${args.active_substance}` : args.target_pest ? `Approved products for ${args.target_pest}` : 'Approved pesticide products (NL)',
+      args.active_substance ? `Approved products containing ${args.active_substance}` : args.target_pest ? `Approved products for ${args.target_pest}` : 'Approved pesticide products',
+      'get_approved_products',
+      { ...(args.active_substance ? { active_substance: args.active_substance } : {}), ...(args.target_pest ? { target_pest: args.target_pest } : {}), ...(args.crop ? { crop: args.crop } : {}) },
+      'https://www.hse.gov.uk/pesticides/databases/',
+    ),
   };
 }
